@@ -10,6 +10,15 @@ singularity: "docker://continuumio/miniconda3"
 configfile: "config/config.yaml"
 validate(config, schema="../schemas/config.schema.yaml")
 
-samples = pd.read_csv(config["samples"], sep="\t").set_index("sample", drop=False)
-samples.index.names = ["sample_id"]
+samples = pd.read_csv(config["samples"], sep=",").set_index("sample", drop=False)
+
 validate(samples, schema="../schemas/samples.schema.yaml")
+
+threads=config['threads']
+
+def get_fastq(wildcards):
+    fastqs = samples.loc[wildcards.accession, ["fq1", "fq2"]].dropna()
+
+    if len(fastqs) == 2:
+        return f"{fastqs.fq1}", f"{fastqs.fq2}"
+    return f"{fastqs.fq1}"

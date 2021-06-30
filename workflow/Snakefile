@@ -15,4 +15,4 @@ rule all:
 
 
 include: "rules/common.smk"
-include: "rules/other.smk"
+include: "rules/quality_control.smk"
