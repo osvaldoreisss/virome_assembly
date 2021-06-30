@@ -22,5 +22,5 @@ rule filter_host:
         "../envs/star.yaml"
     shell: 
         """
-        STAR --runThreadN {threads} --genomeDir {input.genome_index} --readFilesIn {input.fq1} {input.fq2} --outFilterMultimapNmax 9999999 --outFilterMismatchNmax 999 --outFilterMismatchNoverReadLmax 0.04 --outFileNamePrefix {wildcards.sample} --outSAMtype BAM Unsorted --outReadsUnmapped Fastx --readFilesCommand zcat
+        STAR --runThreadN {threads} --genomeDir {input.genome_index} --readFilesIn {input.fq1} {input.fq2} --outFilterMultimapNmax 9999999 --outFilterMismatchNmax 999 --outFilterMismatchNoverReadLmax 0.04 --outFileNamePrefix results/star/{wildcards.sample} --outSAMtype BAM Unsorted --outReadsUnmapped Fastx --readFilesCommand zcat
         """
