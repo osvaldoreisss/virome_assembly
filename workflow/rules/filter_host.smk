@@ -8,7 +8,7 @@ rule create_index:
         "../envs/star.yaml"
     shell:
         """
-        STAR --runThreadN 24 --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {input.fasta} --sjdbGTFfile {input.gff} --sjdbOverhang 99 --genomeSAindexNbases 13
+        STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {input.fasta} --sjdbGTFfile {input.gff} --sjdbOverhang 99 --genomeSAindexNbases 13
         """
 
 rule filter_host:
