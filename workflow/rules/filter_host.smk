@@ -2,7 +2,7 @@
 rule create_index:
     input: unpack(get_resources)
     output:
-        "resources/index/{host}"
+        directory("resources/index/{host}")
     threads: threads
     conda: 
         "../envs/star.yaml"
