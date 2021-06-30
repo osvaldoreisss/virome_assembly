@@ -7,15 +7,16 @@ report: "report/workflow.rst"
 # Allow users to fix the underlying OS via singularity.
 singularity: "docker://continuumio/miniconda3"
 
-include: "rules/common.smk"
+
 
 rule all:
     input:
-        expand("results/star/{sample}Unmapped.out.mate{pair}",sample=samples['sample'], pair=['1','2'])
+        "results/spades"
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
 
 
-
+include: "rules/common.smk"
 include: "rules/quality_control.smk"
 include: "rules/filter_host.smk"
+include: "rules/assembly.smk"
