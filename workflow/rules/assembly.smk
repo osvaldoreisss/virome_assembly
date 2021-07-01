@@ -24,7 +24,7 @@ rule create_spades_dataset:
      }}
 ]"""
 
-        with open('{output}', 'w') as file:
+        with open(f'{output}', 'w') as file:
             file.write(out_str)
 
 rule spades_assembly:
