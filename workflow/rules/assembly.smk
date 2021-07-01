@@ -15,7 +15,7 @@ rule create_spades_dataset:
         out_str = f"""
 [
     {{
-        orientation: "rf",
+        orientation: "fr",
         type: "paired-end",
         right reads:
             [{fq1}],
